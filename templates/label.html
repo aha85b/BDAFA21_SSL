@@ -15,41 +15,43 @@
 {#				</header>#}
 
 
-        <div class="bg-light">
+        <!-- First Part -->
+        <div class="bg-light.bg-gradient">
   <div class="container py-5">
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-6">
         <h1 class="display-4">Labeling Page</h1>
-        <p class="lead text-muted mb-0">Create a minimal about us page using Bootstrap 4.</p>
+        <p class="lead text-muted mb-0">Label the hand gestures and train it with your CNN and RNN model.</p>
         <p class="lead text-muted">Snippet by <a href="https://bootstrapious.com/snippets" class="text-muted">
                     <u>Bootstrapious</u></a>
         </p>
       </div>
-      <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
+      <div class="col-lg-6 d-none d-lg-block"><img src="https://talentmap.com/wp-content/uploads/2020/05/diversity-hands-gesturing-love-sign.jpg" alt="" class="img-fluid"></div>
     </div>
   </div>
 </div>
+<!-- end -->
 
 
-				<div class="container">
-                <div class="row">
-                       <div class="col-6">
-                            <br> <br>
-                            <br> <br>
-                            <div class="content" style="margin-left: 8em">
+        <!-- Second Part -->
+        <div class="bg-light">
+        <div class="container py-5">
+        <div class="row h-100 align-items-center py-5">
+        <div class="col-lg-6">
+
                         <img src="{{ url_for('label_fun') }}" id="cam" style="visibility: visible; border: 10em solid #b6d4fe; padding-left: -200px">
+
                         <div id="bar" class="progress" style="margin-top: 3.2em; visibility: hidden">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; height: 3em">
                 <p style=""> Please wait for training your dataset until you see complete word displays here, this can take up to 20 minutes --->  </p>
                 </div>
-                                </div>
+                        </div>
 
                         <span style="font-size: 4em; font-weight: bold">{{ value }}</span>
 
-                            </div>
-                        </div>
-                        <div class="col-6">
+      </div>
 
+      <div class="col-lg-6 d-none d-lg-block">
                                      <br><br><br><br><br>
                     			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
 							<ul>
@@ -63,18 +65,23 @@
                          <a onclick="location.href='/open_label_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Start Labeling</a>
                          <a onclick="location.href='/close_label_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Labeling</a>
 
+      </div>
 
-                        </div>
-                    </div>
-                    </div>
+        </div>
+        </div>
+        </div>
+<!-- end -->
 
 
-           <hr class="style8">
+           <hr class="style11">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <br><br><br><br><br>
+                <!-- Third Part -->
+        <div class="bg-light">
+        <div class="container py-5">
+        <div class="row h-100 align-items-center py-5">
+        <div class="col-lg-6">
+                        <h2> Convolutional Neural Network </h2>
+                    <br><br><br>
                     			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
 							<ul>
 								<li>Faucibus orci lobortis ac adipiscing integer.</li>
@@ -86,12 +93,11 @@
 
                          <a onclick="showBar(), location.href='/train_cnn';"  class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #7a7a7a">Train Dataset Using CNN</a>
 
+      </div>
 
-                </div>
-
-
-             <div class="col-6">
-                          <br><br><br><br><br>
+      <div class="col-lg-6 d-none d-lg-block">
+                            <h2> Recurrent  Neural Network </h2>
+                    <br><br><br>
                     			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
 							<ul>
 								<li>Faucibus orci lobortis ac adipiscing integer.</li>
@@ -103,18 +109,18 @@
 
                          <a onclick="showBar(), location.href='/train_dataset';"  class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Train Dataset Using RNN</a>
 
-                </div>,
+      </div>
 
-            </div>
         </div>
-                    <section id="content" style="padding-bottom: 5em; margin-top: 1.3em">
+        </div>
+        </div>
+<!-- end -->
+
+           <hr class="style8">
+                    <section id="content" style="padding-bottom: 2em; margin-top: 1.3em">
                             <div style="justify-content: space-between">
 
-
-
                             </div>
-
-
 
 						</section>
 
