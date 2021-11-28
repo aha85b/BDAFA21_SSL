@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Predict Page {% endblock %}
+
+{% block content %}
+    <div class="bg-success p-2 text-dark bg-opacity-25">
+    <section id="main" class="wrapper style1">
+{#                <img src="https://norsenotes.com/wp-content/uploads/2020/12/pasted-image-0-2-1-900x360.png" class="rounded mx-auto d-block" style="width: 80em; height: 30em;">#}
+{##}
+{##}
+{#    <br>#}
+{#				<header class="major" style="text-align: center">#}
+{#					<h1>ASL Project</h1>#}
+{#					<h5>Group 5 </h5>#}
+{#				</header>#}
+
+        <div class="bg-white py-5">
+  <div class="container py-5">
+
+    <div class="row align-items-center">
+      <div class="col-lg-5 px-5 mx-auto"><img src="{{ url_for('camera_cap') }}" id="cam" style="border: 10em solid #b6d4fe; padding-left: 100px"></div>
+      <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+        <h2 class="font-weight-light">Prediction</h2>
+        <p class="font-italic text-muted mb-4">Voila! You can now check the prediction for the gestures you just created!!</p>
+          <a onclick="location.href='/open_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Open Camera</a>
+          <a onclick="location.href='/close_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Camera</a>
+      </div>
+    </div>
+  </div>
+</div>
+						</section>
+				</div>
+			</section>
+    </div>
+
+
+{% endblock %}
