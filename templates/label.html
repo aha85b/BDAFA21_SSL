@@ -15,22 +15,22 @@
 {#				</header>#}
 
 
-        <!-- First Part -->
-        <div class="bg-light.bg-gradient">
-  <div class="container py-5">
-    <div class="row h-100 align-items-center py-5">
-      <div class="col-lg-6">
-        <h1 class="display-4">Label Feature</h1>
-        <p class="lead text-muted mb-0">Label the hand gestures and train it with your CNN and RNN model.</p>
-        <p class="lead text-muted" style="font-size: 40px; margin-top: 2.5em">Scroll down to start labeling<a href="https://bootstrapious.com/snippets" class="text-muted">
-                    </a>
-        </p>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block"><img src="https://talentmap.com/wp-content/uploads/2020/05/diversity-hands-gesturing-love-sign.jpg" alt="" class="img-fluid"></div>
-    </div>
-  </div>
-</div>
-<!-- end -->
+<!--        &lt;!&ndash; First Part &ndash;&gt;-->
+<!--        <div class="bg-light.bg-gradient">-->
+<!--  <div class="container py-5">-->
+<!--    <div class="row h-100 align-items-center py-5">-->
+<!--      <div class="col-lg-6">-->
+<!--        <h1 class="display-4">Label Feature</h1>-->
+<!--        <p class="lead text-muted mb-0">Label the hand gestures and train it with your CNN and RNN model.</p>-->
+<!--        <p class="lead text-muted" style="font-size: 40px; margin-top: 2.5em">Scroll down to start labeling<a href="https://bootstrapious.com/snippets" class="text-muted">-->
+<!--                    </a>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6 d-none d-lg-block"><img src="https://talentmap.com/wp-content/uploads/2020/05/diversity-hands-gesturing-love-sign.jpg" alt="" class="img-fluid"></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; end &ndash;&gt;-->
 
 
         <!-- Second Part -->
@@ -39,7 +39,7 @@
         <div class="row h-100 align-items-center py-5">
         <div class="col-lg-6">
 
-                        <img src="{{ url_for('label_fun') }}" id="cam" style="visibility: visible; border: 10em solid #b6d4fe; padding-left: -200px">
+                        <img src="{{ url_for('label_fun') }}" id="cam" style="visibility: visible; border: 1em solid #b6d4fe;">
 
                         <div id="bar" class="progress" style="margin-top: 3.2em; visibility: hidden">
                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; height: 3em">
@@ -50,9 +50,9 @@
                         <span style="font-size: 4em; font-weight: bold">{{ value }}</span>
 
       </div>
+<hr>
+      <div class="col-lg-6 d-lg-block">
 
-      <div class="col-lg-6 d-none d-lg-block">
-                                     <br><br><br><br><br>
                     			<p>Go Label Feature allows you to register sign language hand movement as a dataset then will be used as following: </p>
 							<ul>
 								<li>User can register N-number of sequences for each ASL word.</li>
