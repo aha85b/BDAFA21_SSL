@@ -18,12 +18,15 @@
   <div class="container py-5">
 
     <div class="row align-items-center">
-      <div class="col-lg-5 px-5 mx-auto"><img src="{{ url_for('camera_cap') }}" id="cam" style="border: 10em solid #b6d4fe; padding-left: 100px"></div>
+      <div class="col-lg-5 px-5"><img src="{{ url_for('camera_cap') }}" id="cam" style="padding: 1em; background-color: #b6d4fe;"></div>
+        <hr>
       <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-        <h2 class="font-weight-light">Prediction</h2>
-        <p class="font-italic text-muted mb-4">Voila! You can now check the prediction for the gestures you just created!!</p>
-          <a onclick="location.href='/open_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Open Camera</a>
-          <a onclick="location.href='/close_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Camera</a>
+        <h2 class="font-weight-light">Predict Feature</h2>
+        <p class="font-italic text-muted mb-4">Before enjoying predict feature, make sure you have registered
+            your own dataset through Go Label feature.
+            To start predicting, click on Open Camera then enjoy testing you entries.</p>
+          <a onclick="borderOpenCam()" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Open Camera</a>
+          <a onclick="borderCloseCam()" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Camera</a>
       </div>
     </div>
   </div>
@@ -32,6 +35,17 @@
 				</div>
 			</section>
     </div>
+
+<script>
+    function borderOpenCam(){
+            location.href='/open_cam';
+    }
+
+    function borderCloseCam(){
+        let boc = document.getElementById('cam');
+        location.href='/close_cam';
+    }
+</script>
 
 
 {% endblock %}
