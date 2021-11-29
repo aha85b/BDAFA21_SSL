@@ -3,31 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="101d07fa-fa07-4e90-b979-26dc1b658b89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/0.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/10.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/10.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/11.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/11.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/12.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/12.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/13.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/13.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/14.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/14.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/15.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/15.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/16.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/16.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/17.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/17.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/18.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/18.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/19.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/19.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/2.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/3.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/3.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/4.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/4.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/5.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/5.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/6.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/6.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/7.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/7.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/8.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/8.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/0/9.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/0/9.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/1/0.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/1/0.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/1/1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/1/1.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/1/2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/1/2.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MP_Data/peace/1/3.npy" beforeDir="false" afterPath="$PROJECT_DIR$/MP_Data/peace/1/3.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/label.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/label.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/predict.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/predict.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
