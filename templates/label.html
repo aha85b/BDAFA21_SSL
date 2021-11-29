@@ -20,10 +20,10 @@
   <div class="container py-5">
     <div class="row h-100 align-items-center py-5">
       <div class="col-lg-6">
-        <h1 class="display-4">Labeling Page</h1>
+        <h1 class="display-4">Label Feature</h1>
         <p class="lead text-muted mb-0">Label the hand gestures and train it with your CNN and RNN model.</p>
-        <p class="lead text-muted">Snippet by <a href="https://bootstrapious.com/snippets" class="text-muted">
-                    <u>Bootstrapious</u></a>
+        <p class="lead text-muted" style="font-size: 40px; margin-top: 2.5em">Scroll down to start labeling<a href="https://bootstrapious.com/snippets" class="text-muted">
+                    </a>
         </p>
       </div>
       <div class="col-lg-6 d-none d-lg-block"><img src="https://talentmap.com/wp-content/uploads/2020/05/diversity-hands-gesturing-love-sign.jpg" alt="" class="img-fluid"></div>
@@ -53,13 +53,16 @@
 
       <div class="col-lg-6 d-none d-lg-block">
                                      <br><br><br><br><br>
-                    			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
+                    			<p>Go Label Feature allows you to register sign language hand movement as a dataset then will be used as following: </p>
 							<ul>
-								<li>Faucibus orci lobortis ac adipiscing integer.</li>
-								<li>Col accumsan arcu mi aliquet placerat.</li>
-								<li>Lobortis vestibulum ut magna tempor massa nascetur.</li>
-								<li>Blandit massa non blandit tempor interdum.</li>
-								<li>Lacinia mattis arcu nascetur lobortis.</li>
+								<li>User can register N-number of sequences for each ASL word.</li>
+								<li>Current version, 20 sequences can be registered for each ASL word.</li>
+								<li>Collected data is auto-saved.</li>
+								<li>No data is collected such as name, photos, etc.</li>
+								<li>After collecting gestures is complete, user can train their dataset.</li>
+                                <li>Click "Start Labeling", your camera will open and start providing gestures.</li>
+                                <li>Available words are: Peace, Like, Dislike and ok.</li>
+                                <li>When labeling is done, scroll down to train your dataset.</li>
 							</ul>
 
                          <a onclick="location.href='/open_label_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Start Labeling</a>
@@ -82,14 +85,16 @@
         <div class="col-lg-6">
                         <h2> Convolutional Neural Network </h2>
                     <br><br><br>
-                    			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
-							<ul>
-								<li>Faucibus orci lobortis ac adipiscing integer.</li>
-								<li>Col accumsan arcu mi aliquet placerat.</li>
-								<li>Lobortis vestibulum ut magna tempor massa nascetur.</li>
-								<li>Blandit massa non blandit tempor interdum.</li>
-								<li>Lacinia mattis arcu nascetur lobortis.</li>
-							</ul>
+                    			<p>After you are done with labeling, you can train your temporary collected
+                                    dataset with CNN by clicking "Train Dataset Using CNN".
+                                    Once it is complete, you can go to Go Predict and test your trained dataset</p>
+<!--							<ul>-->
+<!--								<li>Faucibus orci lobortis ac adipiscing integer.</li>-->
+<!--								<li>Col accumsan arcu mi aliquet placerat.</li>-->
+<!--								<li>Lobortis vestibulum ut magna tempor massa nascetur.</li>-->
+<!--								<li>Blandit massa non blandit tempor interdum.</li>-->
+<!--								<li>Lacinia mattis arcu nascetur lobortis.</li>-->
+<!--							</ul>-->
 
                          <a onclick="showBar(), location.href='/train_cnn';"  class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #7a7a7a">Train Dataset Using CNN</a>
 
@@ -98,14 +103,16 @@
       <div class="col-lg-6 d-none d-lg-block">
                             <h2> Recurrent  Neural Network </h2>
                     <br><br><br>
-                    			<p>In vestibulum massa quis arcu lobortis tempus. Nam pretium arcu in odio vulputate luctus. Suspendisse euismod lorem eget lacinia fringilla. Sed sed felis justo. Nunc sodales elit in laoreet aliquam. Nam gravida, nisl sit amet iaculis porttitor, risus nisi rutrum metus.</p>
-							<ul>
-								<li>Faucibus orci lobortis ac adipiscing integer.</li>
-								<li>Col accumsan arcu mi aliquet placerat.</li>
-								<li>Lobortis vestibulum ut magna tempor massa nascetur.</li>
-								<li>Blandit massa non blandit tempor interdum.</li>
-								<li>Lacinia mattis arcu nascetur lobortis.</li>
-							</ul>
+                    			<p>After you are done with labeling, you can train your temporary collected
+                                    dataset with RNN by clicking "Train Dataset Using RNN".
+                                    Once it is complete, you can go to Go Predict and test your trained dataset</p>
+<!--							<ul>-->
+<!--								<li>Faucibus orci lobortis ac adipiscing integer.</li>-->
+<!--								<li>Col accumsan arcu mi aliquet placerat.</li>-->
+<!--								<li>Lobortis vestibulum ut magna tempor massa nascetur.</li>-->
+<!--								<li>Blandit massa non blandit tempor interdum.</li>-->
+<!--								<li>Lacinia mattis arcu nascetur lobortis.</li>-->
+<!--							</ul>-->
 
                          <a onclick="showBar(), location.href='/train_dataset';"  class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Train Dataset Using RNN</a>
 
