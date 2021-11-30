@@ -72,7 +72,7 @@ def camera_capture_prediction(status):
         num_sequence = []
         list_sentence = []
         list_predictions = []
-        threshold = 0.5
+        threshold = 0.91
 
         with mediapipe_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
             while cap.isOpened():
@@ -298,11 +298,23 @@ def extract_keypoints(results):
     return np.concatenate([lh, rh])
 
 
-def prob_viz(res, action, input_frame, colors):
+def prob_viz(res, actions, input_frame, colors):
     output_frame = input_frame.copy()
     for num, prob in enumerate(res):
-        cv2.rectangle(output_frame, (0, 60 + num * 40), (int(prob * 100), 90 + num * 40), colors[num], -1)
-        cv2.putText(output_frame, action[num], (0, 85 + num * 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2,
-                    cv2.LINE_AA)
+        if prob > 1:
+            print()
+        else:
+            rate = prob
+        cv2.rectangle(output_frame, (0, 60 + num * 40), (int(prob * 200), 90 + num * 40), colors[num], -1)
+        cv2.putText(output_frame, actions[num] + ' ' + str("%.2f" % rate), (0, 85 + num * 40), cv2.FONT_HERSHEY_SIMPLEX,
+                    1, (255, 255, 255), 2, cv2.LINE_AA)
 
     return output_frame
+# def prob_viz(res, action, input_frame, colors):
+#     output_frame = input_frame.copy()
+#     for num, prob in enumerate(res):
+#         cv2.rectangle(output_frame, (0, 60 + num * 40), (int(prob * 100), 90 + num * 40), colors[num], -1)
+#         cv2.putText(output_frame, action[num], (0, 85 + num * 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2,
+#                     cv2.LINE_AA)
+#
+#     return output_frame
