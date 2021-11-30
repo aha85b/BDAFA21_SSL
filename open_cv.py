@@ -173,7 +173,7 @@ def label_function(status):
                                 cv2.putText(image, 'STARTING COLLECTION', (120, 200),
                                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 4, cv2.LINE_AA)
                                 cv2.putText(image,
-                                            'Collecting frames for {} Video Number if Section {}'.format(action,
+                                            'Collecting frames for {} Video {}'.format(action,
                                                                                                          sequence),
                                             (15, 12),
                                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
@@ -188,7 +188,7 @@ def label_function(status):
                             else:
 
                                 cv2.putText(image,
-                                            'Collecting frames for {} Video Number Else Section {}'.format(action,
+                                            'Collecting frames for {} Video Number {}'.format(action,
                                                                                                            sequence),
                                             (15, 12),
                                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
