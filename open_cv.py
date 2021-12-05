@@ -11,8 +11,12 @@ from tensorflow.keras.layers import LSTM, Dense, Dropout, Conv1D, MaxPooling1D, 
 from tensorflow.keras.callbacks import TensorBoard
 from sklearn.metrics import multilabel_confusion_matrix, accuracy_score
 
+import datetime
+from playsound import playsound
+from gtts import gTTS
 
 from tensorflow.keras.models import load_model
+
 
 
 mediapipe_holistic = mp.solutions.holistic
@@ -23,6 +27,8 @@ list_of_gest = ['peace', 'like', 'dislike', 'ok']
 actions = np.array(list_of_gest)
 no_sequences = 20
 sequence_length = 20
+
+file_name = " "
 
 
 def mediapipe_detection(image, model):
@@ -72,10 +78,12 @@ def camera_capture_prediction(status):
         num_sequence = []
         list_sentence = []
         list_predictions = []
-        threshold = 0.91
+        threshold = 0.68
 
         with mediapipe_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
             while cap.isOpened():
+                datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+                file_name = "output" + datetime_string + ".mp3"
                 success, frame = cap.read()  # read the camera frame
                 if not success:
                     break
@@ -86,32 +94,56 @@ def camera_capture_prediction(status):
                     # Make detections
                     image, results = mediapipe_detection(frame, holistic)
 
-
-
                     draw_styled_landmarks(image, results)
 
                     keypoints = extract_keypoints(results)
                     num_sequence.append(keypoints)
                     num_sequence = num_sequence[-no_sequences:]
 
+
+
                     if len(num_sequence) == no_sequences:
                         res = model.predict(np.expand_dims(num_sequence, axis=0))[0]
-
                         list_predictions.append(np.argmax(res))
 
                         if np.unique(list_predictions[-no_sequences:])[0] == np.argmax(res):
                             if res[np.argmax(res)] > threshold:
 
                                 if len(list_sentence) > 0:
+                                    # global file_name
+                                    # datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
                                     if actions[np.argmax(res)] != list_sentence[-1]:
                                         list_sentence.append(actions[np.argmax(res)])
+                                        text = "Did you mean to say" + actions[np.argmax(res)]
+                                        output = gTTS(text=text, lang="en", slow=False)
+                                        # datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+                                        # file_name = "output"+datetime_string+".mp3"
+                                        output.save(file_name)
+                                        print(file_name,"first if")
+                                        playsound(file_name, True)
+                                        os.remove(file_name)
+                                        #playsound("C:/Users/dhh3hb/Documents/GitHub/BDAFA21_SSL/output.mp3")
+
+
                                 else:
                                     list_sentence.append(actions[np.argmax(res)])
+                                    image = prob_viz(res, actions, image, colors)
+                                    text = "Did you mean to say" + actions[np.argmax(res)]
+                                    output = gTTS(text=text, lang="en", slow=False)
+                                    # datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+                                    # file_name = "output" + datetime_string + ".mp3"
+                                    output.save(file_name)
+                                    print(file_name, "first else")
+                                    playsound(file_name, True)
+                                    os.remove(file_name)
+                                    #playsound("C:/Users/dhh3hb/Documents/GitHub/BDAFA21_SSL/output.mp3")
 
                         if len(list_sentence) > 5:
                             list_sentence = list_sentence[-5:]
 
                         image = prob_viz(res, actions, image, colors)
+
+
 
                     cv2.rectangle(image, (0, 0), (640, 40), (245, 117, 16), -1)
                     cv2.putText(image, ' '.join(list_sentence), (30, 30),
