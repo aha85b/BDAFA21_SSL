@@ -3,7 +3,7 @@
 {% block title %} Go Predict {% endblock %}
 
 {% block content %}
-    <div class="bg-success p-2 text-dark bg-opacity-25">
+<!--    <div class="bg-success p-2 text-dark bg-opacity-25">-->
     <section id="main" class="wrapper style1">
 {#                <img src="https://norsenotes.com/wp-content/uploads/2020/12/pasted-image-0-2-1-900x360.png" class="rounded mx-auto d-block" style="width: 80em; height: 30em;">#}
 {##}
@@ -27,14 +27,55 @@
             To start predicting, click on Open Camera then enjoy testing you entries.</p>
           <a onclick="borderOpenCam()" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Open Camera</a>
           <a onclick="borderCloseCam()" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Camera</a>
+
       </div>
     </div>
   </div>
 </div>
-						</section>
-				</div>
-			</section>
-    </div>
+
+   </section>
+
+
+    <section id="section_three" class="wrapper style1">
+
+        <form style="margin-left: 10em; margin-right: 10em" action="#" method="post">
+          <div class="mb-1">
+            <label for="exampleInputEmail1" class="form-label">ADD YOUR WORD</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+          </div>
+<!--          <div class="mb-1">-->
+<!--            <label for="exampleInputPassword1" class="form-label">Password</label>-->
+<!--            <input type="password" class="form-control" id="exampleInputPassword1">-->
+<!--          </div>-->
+<!--          <div class="mb-1 form-check">-->
+<!--            <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+<!--&lt;!&ndash;            <label class="form-check-label" for="exampleCheck1">Check me out</label>&ndash;&gt;-->
+<!--          </div>-->
+          <button type="submit" class="btn btn-primary">Apply Hyperparameters</button>
+        </form>
+
+        <div class="bg-white py-5">
+            <div class="container py-5">
+
+                 <div class="row align-items-center">
+                     <h3 class="list-group list-group-flush">{{ name }}</h3>
+                    <table class="table">
+                       <tr>
+                           <th>List of Gestures</th>
+                       </tr>
+                        {% for item in list %}
+                       <tr>
+                           <td class="table-secondary">
+                               {{ item }}
+                           </td>
+                       </tr>
+                        {% endfor %}
+                    </table>
+                 </div>
+            </div>
+        </div>
+
+   </section>
 
 <script>
     function borderOpenCam(){

@@ -23,7 +23,7 @@ mediapipe_holistic = mp.solutions.holistic
 mediapipe_drawing = mp.solutions.drawing_utils
 
 DATA_PATH = os.path.join('MP_Data')
-list_of_gest = ['peace', 'like', 'dislike', 'ok']
+list_of_gest = ['peace', 'like', 'dislike', 'okay']
 actions = np.array(list_of_gest)
 no_sequences = 20
 sequence_length = 20
@@ -49,13 +49,13 @@ def draw_landmarks(image, results):
 def draw_styled_landmarks(image, results):
 
     mediapipe_drawing.draw_landmarks(image, results.left_hand_landmarks, mediapipe_holistic.HAND_CONNECTIONS,
-                             mediapipe_drawing.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
-                             mediapipe_drawing.DrawingSpec(color=(121,44,250), thickness=2, circle_radius=2)
+                             mediapipe_drawing.DrawingSpec(color=(121,22,76), thickness=1, circle_radius=2),
+                             mediapipe_drawing.DrawingSpec(color=(121,44,250), thickness=1, circle_radius=1)
                              )
 
     mediapipe_drawing.draw_landmarks(image, results.right_hand_landmarks, mediapipe_holistic.HAND_CONNECTIONS,
-                             mediapipe_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=4),
-                             mediapipe_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2)
+                             mediapipe_drawing.DrawingSpec(color=(245,117,66), thickness=1, circle_radius=2),
+                             mediapipe_drawing.DrawingSpec(color=(245,66,230), thickness=1, circle_radius=1)
                              )
 
 
@@ -70,7 +70,7 @@ def camera_capture_prediction(status):
 
     elif status == 2:
 
-        list_of_gest = ['peace', 'like', 'dislike', 'ok']
+        list_of_gest = ['peace', 'like', 'dislike', 'okay']
         actions = np.array(list_of_gest)
 
         colors = [(245, 117, 16), (117, 245, 16), (16, 117, 245), (16, 217, 245)]
@@ -122,6 +122,8 @@ def camera_capture_prediction(status):
                                         print(file_name,"first if")
                                         playsound(file_name, True)
                                         os.remove(file_name)
+                                        # val = input('Enter yes or no: ')
+                                        # print(val)
                                         #playsound("C:/Users/dhh3hb/Documents/GitHub/BDAFA21_SSL/output.mp3")
 
 
@@ -136,6 +138,8 @@ def camera_capture_prediction(status):
                                     print(file_name, "first else")
                                     playsound(file_name, True)
                                     os.remove(file_name)
+                                    # val = input('Enter yes or no: ')
+                                    # print(val)
                                     #playsound("C:/Users/dhh3hb/Documents/GitHub/BDAFA21_SSL/output.mp3")
 
                         if len(list_sentence) > 5:
@@ -153,6 +157,8 @@ def camera_capture_prediction(status):
                     frame = buffer.tobytes()
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+                    cv2.waitKey(20)
 
 
 def label_function(status):
@@ -342,6 +348,11 @@ def prob_viz(res, actions, input_frame, colors):
                     1, (255, 255, 255), 2, cv2.LINE_AA)
 
     return output_frame
+
+
+def list_of_predicted_words():
+    return list_of_gest
+
 # def prob_viz(res, action, input_frame, colors):
 #     output_frame = input_frame.copy()
 #     for num, prob in enumerate(res):
