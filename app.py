@@ -386,4 +386,4 @@ def list_of_user_gestures():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

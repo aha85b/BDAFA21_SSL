@@ -89,10 +89,10 @@ def camera_capture_prediction(status, names, number_of_sequ):
                 file_name = "output" + datetime_string + ".mp3"
                 success, frame = cap.read()  # read the camera frame
                 if not success:
-                    print("if not success")
+                    # print("if not success")
                     break
                 else:
-                    print("if success")
+                    # print("if success")
                     ret, frame = cap.read()
 
                     # Make detections
@@ -162,7 +162,7 @@ def camera_capture_prediction(status, names, number_of_sequ):
                     yield (b'--frame\r\n'
                            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-                    cv2.waitKey(20)
+
 
 
 def label_function(status, names, number_of_sequences):

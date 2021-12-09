@@ -89,7 +89,7 @@
                                 <li>When labeling is done, scroll down to train your dataset.</li>
 							</ul>
 
-                         <a onclick="location.href='/open_label_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Start Labeling</a>
+                         <a onclick="open_cam_label()" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #198754">Start Labeling</a>
                          <a onclick="location.href='/close_label_cam';" class="btn btn-dark px-5 rounded-pill shadow-sm" style="background-color: #bb2d3b">Close Labeling</a>
 
       </div>
@@ -171,6 +171,10 @@
         }else{
             x.style.visibility = 'hidden'
         }
+    }
+
+    function open_cam_label() {
+        location.href='/open_label_cam';
     }
 </script>
 
