@@ -23,7 +23,8 @@ mediapipe_holistic = mp.solutions.holistic
 mediapipe_drawing = mp.solutions.drawing_utils
 
 DATA_PATH = os.path.join('MP_Data')
-list_of_gest = ['peace', 'like', 'dislike', 'okay']
+list_of_gest = []
+
 actions = np.array(list_of_gest)
 no_sequences = 20
 sequence_length = 20
@@ -59,9 +60,11 @@ def draw_styled_landmarks(image, results):
                              )
 
 
-def camera_capture_prediction(status):
+def camera_capture_prediction(status, names, number_of_sequ):
+    print(int(number_of_sequ))
     model = load_model('action.h5')
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    print(cap.isOpened())
 
     if status == 1:
 
@@ -70,8 +73,8 @@ def camera_capture_prediction(status):
 
     elif status == 2:
 
-        list_of_gest = ['peace', 'like', 'dislike', 'okay']
-        actions = np.array(list_of_gest)
+        # list_of_gest = ['peace', 'like', 'dislike', 'okay']
+        actions = np.array(names)
 
         colors = [(245, 117, 16), (117, 245, 16), (16, 117, 245), (16, 217, 245)]
 
@@ -86,9 +89,10 @@ def camera_capture_prediction(status):
                 file_name = "output" + datetime_string + ".mp3"
                 success, frame = cap.read()  # read the camera frame
                 if not success:
+                    print("if not success")
                     break
                 else:
-
+                    print("if success")
                     ret, frame = cap.read()
 
                     # Make detections
@@ -98,15 +102,15 @@ def camera_capture_prediction(status):
 
                     keypoints = extract_keypoints(results)
                     num_sequence.append(keypoints)
-                    num_sequence = num_sequence[-no_sequences:]
+                    num_sequence = num_sequence[-int(number_of_sequ):]
 
 
 
-                    if len(num_sequence) == no_sequences:
+                    if len(num_sequence) == int(number_of_sequ):
                         res = model.predict(np.expand_dims(num_sequence, axis=0))[0]
                         list_predictions.append(np.argmax(res))
 
-                        if np.unique(list_predictions[-no_sequences:])[0] == np.argmax(res):
+                        if np.unique(list_predictions[-int(number_of_sequ):])[0] == np.argmax(res):
                             if res[np.argmax(res)] > threshold:
 
                                 if len(list_sentence) > 0:
@@ -161,10 +165,26 @@ def camera_capture_prediction(status):
                     cv2.waitKey(20)
 
 
-def label_function(status):
+def label_function(status, names, number_of_sequences):
+    print("label function is clicked")
+    # global list_of_gest
+    # global no_sequences
+    # global sequence_length
+    # no_sequences = int(number_of_sequences)
+    # sequence_length = int(number_of_sequences)
+    # list_of_gest = names
 
-    for action in actions:
-        for sequence in range(no_sequences):
+    print(int(number_of_sequences))
+
+    # print(no_sequences, sequence_length)
+    #
+    # print("I am here at the label function opencv file", number_of_sequences)
+    # print("I am here at the label function opencv file", no_sequences)
+
+    actions_here = np.array(names)
+
+    for action in actions_here:
+        for sequence in range(int(number_of_sequences)):
             try:
                 os.makedirs(os.path.join(DATA_PATH, action, str(sequence)))
             except:
@@ -173,17 +193,25 @@ def label_function(status):
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
     if status == 1:
-        print('label fun if condition')
         cap.release()
         cv2.destroyAllWindows()
 
     elif status == 2:
-        print('label fun else condition')
-
+        print(cap.isOpened())
         with mediapipe_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
             while cap.isOpened():
+                datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+                file_name = "output" + datetime_string + ".mp3"
 
-                for action in actions:
+                for action in actions_here:
+                    text = "Get Ready to start labeling for " + action + " in 5 seconds"
+                    output = gTTS(text=text, lang="en", slow=False)
+                    # datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+                    # file_name = "output"+datetime_string+".mp3"
+                    output.save(file_name)
+                    print(file_name, "first if")
+                    playsound(file_name, True)
+                    os.remove(file_name)
 
                     ret, frame4 = cap.read()
                     image, results = mediapipe_detection(frame4, holistic)
@@ -197,8 +225,8 @@ def label_function(status):
 
                     cv2.waitKey(5000)
 
-                    for sequence in range(no_sequences):
-                        for frame_num in range(sequence_length):
+                    for sequence in range(int(number_of_sequences)):
+                        for frame_num in range(int(number_of_sequences)):
 
                             ret, frame = cap.read()
 
@@ -207,7 +235,7 @@ def label_function(status):
                             draw_styled_landmarks(image, results)
 
                             if frame_num == 0:
-
+                                print("label function is clicked")
                                 cv2.putText(image, 'STARTING COLLECTION', (120, 200),
                                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 4, cv2.LINE_AA)
                                 cv2.putText(image,
@@ -245,17 +273,30 @@ def label_function(status):
                 cv2.destroyAllWindows()
 
 
-def training_dataset():
+
+def training_dataset(names, number_of_seq):
     global wait_message
     wait_message = 'Please wait until you see complete word displayed'
 
-    label_map = {label: num for num, label in enumerate(actions)}
+    text = "Please wait until you see complete word displayed"
+    output = gTTS(text=text, lang="en", slow=False)
+    datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+    file_name = "output"+datetime_string+".mp3"
+    output.save(file_name)
+    print(file_name, "first if")
+    playsound(file_name, True)
+    os.remove(file_name)
+
+    actions_here = np.array(names)
+    print(actions_here.shape[0])
+
+    label_map = {label: num for num, label in enumerate(actions_here)}
 
     sequences, labels = [], []
-    for action in actions:
-        for sequence in range(no_sequences):
+    for action in actions_here:
+        for sequence in range(int(number_of_seq)):
             window = []
-            for frame_num in range(sequence_length):
+            for frame_num in range(int(number_of_seq)):
                 res = np.load(os.path.join(DATA_PATH, action, str(sequence), "{}.npy".format(frame_num)))
                 window.append(res)
             sequences.append(window)
@@ -270,12 +311,12 @@ def training_dataset():
     tb_callback = TensorBoard(log_dir=log_dir)
 
     model = Sequential()
-    model.add(LSTM(64, return_sequences=True, activation='relu', input_shape=(no_sequences, 126)))
+    model.add(LSTM(64, return_sequences=True, activation='relu', input_shape=(int(number_of_seq), 126)))
     model.add(LSTM(128, return_sequences=True, activation='relu'))
     model.add(LSTM(64, return_sequences=False, activation='relu'))
     model.add(Dense(64, activation='relu'))
     model.add(Dense(32, activation='relu'))
-    model.add(Dense(actions.shape[0], activation='softmax'))
+    model.add(Dense(actions_here.shape[0], activation='softmax'))
 
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
@@ -284,17 +325,30 @@ def training_dataset():
     model.save('action.h5')
 
 
-def train_dataset_cnn():
+def train_dataset_cnn(names, number_of_seq):
     global wait_message
     wait_message = 'Please wait until you see complete word displayed'
 
-    label_map = {label: num for num, label in enumerate(actions)}
+    text = "Please wait until you see complete word displayed"
+    output = gTTS(text=text, lang="en", slow=False)
+    datetime_string = datetime.datetime.now().strftime("%d%m%Y%H%M%S")
+    file_name = "output"+datetime_string+".mp3"
+    output.save(file_name)
+    print(file_name, "first if")
+    playsound(file_name, True)
+    os.remove(file_name)
+
+    actions_here = np.array(names)
+    print(actions_here.shape[0])
+
+    label_map = {label: num for num, label in enumerate(actions_here)}
 
     sequences, labels = [], []
-    for action in actions:
-        for sequence in range(no_sequences):
+    for action in actions_here:
+
+        for sequence in range(int(number_of_seq)):
             window = []
-            for frame_num in range(sequence_length):
+            for frame_num in range(int(number_of_seq)):
                 res = np.load(os.path.join(DATA_PATH, action, str(sequence), "{}.npy".format(frame_num)))
                 window.append(res)
             sequences.append(window)
@@ -309,16 +363,16 @@ def train_dataset_cnn():
     tb_callback = TensorBoard(log_dir=log_dir)
 
     model = Sequential()
-    model.add(Conv1D(32, kernel_size=5, strides=1, padding="causal", activation='relu', input_shape=(no_sequences, 126)))
-    model.add(MaxPooling1D(2))
+    model.add(Conv1D(32, kernel_size=5, strides=1, padding="causal", activation='relu', input_shape=(int(number_of_seq), 126)))
+    model.add(MaxPooling1D(1))
     model.add(Conv1D(64, 5, strides=1, padding="causal", activation='relu'))
-    model.add(MaxPooling1D(2))
+    model.add(MaxPooling1D(1))
     model.add(Conv1D(128, 5, strides=1, padding="causal", activation='relu'))
-    model.add(MaxPooling1D(2))
+    model.add(MaxPooling1D(1))
     model.add(Dropout(0.4))
     model.add(Flatten())
     model.add(Dense(512, activation='relu'))
-    model.add(Dense(len(actions), activation='softmax'))
+    model.add(Dense(actions_here.shape[0], activation='softmax'))
 
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
